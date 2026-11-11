@@ -23,6 +23,10 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
+
+-- CursorLineNr only applies with cursorline on; "number" highlights just the number, not the line.
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
@@ -51,6 +55,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = "YankHighlight",
   pattern = "*",
   callback = function()
-    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 30 })
+    vim.hl.on_yank({ higroup = "IncSearch", timeout = 150 })
   end,
 })

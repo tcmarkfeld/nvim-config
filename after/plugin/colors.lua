@@ -9,7 +9,7 @@ function ColorMyPencils(color)
     vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
     vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { bg = "none", fg = "#ECBE7B" })
     vim.api.nvim_set_hl(0, "LineNr", { fg = "#8A8A8A" }) -- Medium gray
-    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#C0A080", bold = true })
+    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#FFD700", bold = true }) -- gold
     --   vim.cmd("highlight Italic gui=NONE cterm=NONE")
 end
 
