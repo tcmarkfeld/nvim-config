@@ -1,6 +1,6 @@
 -- nvim-treesitter `main` only installs parsers; Neovim does the highlighting.
 require('nvim-treesitter').install({
-        'bash', 'c', 'c_sharp', 'ini', 'javascript', 'json', 'lua', 'markdown', 'markdown_inline',
+        'bash', 'c', 'c_sharp', 'go', 'gomod', 'gosum', 'gowork', 'ini', 'javascript', 'json', 'lua', 'markdown', 'markdown_inline',
         'properties', 'python', 'query', 'toml', 'tsx', 'typescript', 'vim', 'vimdoc', 'yaml',
 })
 

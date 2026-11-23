@@ -5,7 +5,7 @@ vim.lsp.config('*', {
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls', 'omnisharp', 'rust_analyzer', 'jdtls', 'basedpyright', 'ts_ls' },
+        ensure_installed = { 'lua_ls', 'omnisharp', 'rust_analyzer', 'jdtls', 'basedpyright', 'ts_ls', 'gopls' },
 })
 
 -- Same keymaps lsp-zero's default_keymaps set. K, [d and ]d are Neovim defaults.
