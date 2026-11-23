@@ -49,6 +49,14 @@ vim.g.mapleader = " "
 -- Have same clipboard as system
 vim.opt.clipboard = "unnamedplus"
 
+-- Reload files changed outside Neovim (e.g. by Claude). 'autoread' only acts when
+-- something runs :checktime, so check every second. Skipped while typing a command.
+vim.uv.new_timer():start(1000, 1000, vim.schedule_wrap(function()
+  if vim.fn.mode() ~= "c" and vim.fn.getcmdwintype() == "" then
+    vim.cmd("silent! checktime")
+  end
+end))
+
 -- Highlight when yanking
 vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {

@@ -84,6 +84,7 @@ require("lazy").setup({
         opts = {
             filesystem = {
                 follow_current_file = { enabled = true }, -- highlight and expand to the open file, like VS Code
+                use_libuv_file_watcher = true, -- refresh when files are added/removed outside Neovim
             },
             -- Single click opens a file or toggles a folder, like VS Code.
             window = {
@@ -106,6 +107,21 @@ require("lazy").setup({
                 -- Start the tabs after the explorer instead of above it.
                 offsets = { { filetype = "neo-tree", text = "Explorer", highlight = "Directory", separator = true } },
             },
+            -- Keep file names in the normal tab color; only the diagnostic count shows severity.
+            highlights = function(defaults)
+                local hl = defaults.highlights
+                -- Inactive tabs default to the Comment color (green in the vscode theme); use VS Code's gray.
+                local gray = { [hl.background.fg] = "#9d9d9d", [hl.diagnostic.fg] = "#6e6e6e", [hl.duplicate.fg] = "#8a8a8a" }
+                for _, group in pairs(hl) do
+                    group.fg = gray[group.fg] or group.fg
+                end
+                for _, sev in ipairs({ "error", "warning", "info", "hint" }) do
+                    hl[sev].fg = hl.background.fg
+                    hl[sev .. "_visible"].fg = hl.buffer_visible.fg
+                    hl[sev .. "_selected"].fg = hl.buffer_selected.fg
+                end
+                return hl
+            end,
         },
     },
 
