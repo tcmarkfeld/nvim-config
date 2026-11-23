@@ -85,6 +85,13 @@ require("lazy").setup({
             filesystem = {
                 follow_current_file = { enabled = true }, -- highlight and expand to the open file, like VS Code
             },
+            -- Single click opens a file or toggles a folder, like VS Code.
+            window = {
+                mappings = {
+                    ["<LeftRelease>"] = "open",
+                    ["<2-LeftMouse>"] = "none",
+                },
+            },
         },
     },
 
