@@ -23,6 +23,9 @@ require("lazy").setup({
 
     "EdenEast/nightfox.nvim",
 
+    -- VS Code dark theme (Dark Modern background, Dark+ syntax colors).
+    { "Mofiqul/vscode.nvim", opts = {} },
+
     {
         "neanias/everforest-nvim",
         main = "everforest",
@@ -81,6 +84,20 @@ require("lazy").setup({
         opts = {
             filesystem = {
                 follow_current_file = { enabled = true }, -- highlight and expand to the open file, like VS Code
+            },
+        },
+    },
+
+    -- Open buffers as tabs along the top, like VS Code. Cycle with [b / ]b.
+    {
+        "akinsho/bufferline.nvim",
+        version = "*",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+            options = {
+                diagnostics = "nvim_lsp",
+                -- Start the tabs after the explorer instead of above it.
+                offsets = { { filetype = "neo-tree", text = "Explorer", highlight = "Directory", separator = true } },
             },
         },
     },

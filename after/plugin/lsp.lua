@@ -27,6 +27,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end,
 })
 
+-- Show the diagnostics for the cursor line in a popup when the cursor rests on it (after 'updatetime').
+-- Skipped while another popup (e.g. K hover) is open so it doesn't cover it.
+vim.diagnostic.config({ float = { border = 'rounded', source = 'if_many' } })
+vim.api.nvim_create_autocmd('CursorHold', {
+        callback = function()
+                for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+                        if vim.api.nvim_win_get_config(win).relative ~= '' then return end
+                end
+                vim.diagnostic.open_float({ focus = false })
+        end,
+})
+
 -- Same completion setup lsp-zero v3 applied.
 local cmp = require('cmp')
 cmp.setup({
